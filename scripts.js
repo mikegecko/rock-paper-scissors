@@ -12,7 +12,11 @@ function game(){
     let losses = 0;
     for(let i=1; i<=5; i++){
         
-        playerSelection = prompt("Please choose rock, paper or scissors:"); 
+        
+        do{
+            playerSelection = prompt("Please choose rock, paper or scissors:"); 
+        }
+        while(playerSelection == null || playerSelection == undefined);
         computerPlay();
         let result = playRound(playerSelection,computerSelection);
         console.log("The result of the round is:", result );
