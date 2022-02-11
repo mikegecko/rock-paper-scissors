@@ -5,22 +5,57 @@ let computerSelection = "";
 const options = ["rock","paper","scissors"];
 let playerScore = 0;
 let computerScore = 0;
+let ties = 0;
 
 
 const buttons = document.querySelectorAll('#btn'); //Selects all buttons
 //Now we need to add event listeners to each button
 buttons.forEach(element => {
     element.addEventListener('click', function(e) {
-        //I feel like this isnt the best or most secure method of retrieving the button text
-        let outcome = playRound(e.target.innerText, computerPlay());
-        tally(outcome);
+        //I feel like this isnt the best or most secure method of doing this
+        (playRound(e.target.innerText));
+        
     })
 });
+//This function broke AF and idk why
+function tally(arg1){
+    let outcome = arg1;
+    if(playerScore < 5 && computerScore < 5){
 
-function tally(outcome){
-    if(outcome == -1){
-
+        if(outcome == 2){
+            ties++;
+            console.log("P:", playerScore,"C:",computerScore);
+            return;
+        }
+        if(outcome == 0){
+            computerScore++;
+            console.log("P:", playerScore,"C:",computerScore);
+            return;
+        }
+        if(outcome == 1){
+            playerScore++;
+            console.log("P:", playerScore,"C:",computerScore);
+            return;
+        }
     }
+    else{
+        
+        if(computerScore == 5){
+            alert("You Lost!");
+            playerScore = 0;
+            computerScore = 0;
+            ties = 0;
+            return;
+        }
+        else if(playerScore == 5){
+            alert("You Won!");
+            playerScore = 0;
+            computerScore = 0;
+            ties = 0;
+            return;
+        }
+    }
+        
     
 }
 
@@ -36,42 +71,57 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
-function playRound(playerSelection,computerSelection){
-    
+//Rules are the following: 2 for a tie, 0 for a loss, 1 for a win
+function playRound(playerSelection){
+    computerSelection = computerPlay();
     playerSelection = playerSelection.toLowerCase();
+    console.log("P:", playerScore,"C:",computerScore);
     console.log("P:",playerSelection ,"C:", computerSelection);
+    
        
     if(playerSelection.localeCompare("rock") == 0){
-        if(computerSelection.localeCompare("rock")){
-            return(-1);
+        if(computerSelection.localeCompare("rock")== 0){
+            console.log("Tie!");
+            ties++;
+            return;
         }
-        else if(computerSelection.localeCompare("paper")){
-            return(0);
+        if(computerSelection.localeCompare("paper")== 0){
+            computerScore++;
+            return;
         }
-        else if(computerSelection.localeCompare("scissors")){
-            return(1);
+        if(computerSelection.localeCompare("scissors")== 0){
+            playerScore++;
+            return;
         }
     } 
-    else if(playerSelection.localeCompare("paper") == 0){
-        if(computerSelection.localeCompare("rock")){
-            return(1);
+    if(playerSelection.localeCompare("paper") == 0){
+        if(computerSelection.localeCompare("rock")== 0){
+            playerScore++;
+            return;
         }
-        else if(computerSelection.localeCompare("paper")){
-            return(-1);
+        if(computerSelection.localeCompare("paper")== 0){
+            console.log("Tie!");
+            ties++;
+            return;
         }
-        else if(computerPlaycomputerPlay.localeCompare("scissors")){
-            return(0);
+        if(computerSelection.localeCompare("scissors")== 0){
+            computerScore++;
+            return;
         }
     }
-    else if(playerSelection.localeCompare("scissors") == 0){
-        if(computerSelection.localeCompare("rock")){
-            return(0);
+    if(playerSelection.localeCompare("scissors") == 0){
+        if(computerSelection.localeCompare("rock")== 0){
+            computerScore++;
+            return;
         }
-        else if(computerSelection.localeCompare("paper")){
-            return(1);
+        if(computerSelection.localeCompare("paper")== 0){
+            playerScore++;
+            return;
         }
-        else if(computerSelection.localeCompare("scissors")){
-            return(-1);
+        if(computerSelection.localeCompare("scissors")== 0){
+            console.log("Tie!");
+            ties++;
+            return;
         }
     }
     else{
