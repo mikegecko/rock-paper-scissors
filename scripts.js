@@ -8,7 +8,7 @@ let computerScore = 0;
 let ties = 0;
 
 
-const buttons = document.querySelectorAll('#btn'); //Selects all buttons
+const buttons = document.querySelectorAll(".btn"); //Selects all buttons
 //Now we need to add event listeners to each button
 buttons.forEach(element => {
     element.addEventListener('click', function(e) {
@@ -17,24 +17,24 @@ buttons.forEach(element => {
         
     })
 });
-//This function broke AF and idk why
+
 function tally(arg1){
     let outcome = arg1;
     if(playerScore < 5 && computerScore < 5){
 
         if(outcome == 2){
             ties++;
-            console.log("P:", playerScore,"C:",computerScore);
+            //console.log("P:", playerScore,"C:",computerScore);
             return;
         }
         if(outcome == 0){
             computerScore++;
-            console.log("P:", playerScore,"C:",computerScore);
+            //console.log("P:", playerScore,"C:",computerScore);
             return;
         }
         if(outcome == 1){
             playerScore++;
-            console.log("P:", playerScore,"C:",computerScore);
+            //console.log("P:", playerScore,"C:",computerScore);
             return;
         }
     }
@@ -82,45 +82,45 @@ function playRound(playerSelection){
     if(playerSelection.localeCompare("rock") == 0){
         if(computerSelection.localeCompare("rock")== 0){
             console.log("Tie!");
-            ties++;
+            tally(2);
             return;
         }
         if(computerSelection.localeCompare("paper")== 0){
-            computerScore++;
+            tally(0);
             return;
         }
         if(computerSelection.localeCompare("scissors")== 0){
-            playerScore++;
+            tally(1);
             return;
         }
     } 
     if(playerSelection.localeCompare("paper") == 0){
         if(computerSelection.localeCompare("rock")== 0){
-            playerScore++;
+            tally(1);
             return;
         }
         if(computerSelection.localeCompare("paper")== 0){
             console.log("Tie!");
-            ties++;
+            tally(2);
             return;
         }
         if(computerSelection.localeCompare("scissors")== 0){
-            computerScore++;
+            tally(0);
             return;
         }
     }
     if(playerSelection.localeCompare("scissors") == 0){
         if(computerSelection.localeCompare("rock")== 0){
-            computerScore++;
+            tally(0);
             return;
         }
         if(computerSelection.localeCompare("paper")== 0){
-            playerScore++;
+            tally(1);
             return;
         }
         if(computerSelection.localeCompare("scissors")== 0){
             console.log("Tie!");
-            ties++;
+            tally(2);
             return;
         }
     }
