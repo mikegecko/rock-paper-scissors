@@ -8,6 +8,12 @@ button{
     height: 150px;
     border-radius: 10px;
 }
+.log{
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    font-size: 32px;
+}
 .container{
     
     display: flex;

@@ -11,6 +11,7 @@ let ties = 0;
 const buttons = document.querySelectorAll(".btn"); //Selects all buttons
 const playerScoreDisplay = document.querySelector(".p-log");
 const computerScoreDisplay = document.querySelector(".c-log");
+const logDisplay = document.querySelector(".log");
 //Now we need to add event listeners to each button
 buttons.forEach(element => {
     element.addEventListener('click', function(e) {
@@ -21,6 +22,7 @@ buttons.forEach(element => {
 });
 /* Updates the DOM to reflect current scores */
 function updateDisplay(){
+
     playerScoreDisplay.textContent = playerScore.toString();
     computerScoreDisplay.textContent = computerScore.toString();
 }
