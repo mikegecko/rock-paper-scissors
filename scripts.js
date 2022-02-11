@@ -16,13 +16,14 @@ const logDisplay = document.querySelector(".log");
 buttons.forEach(element => {
     element.addEventListener('click', function(e) {
         //I feel like this isnt the best or most secure method of doing this
+        playerSelection = e.target.innerText;
         (playRound(e.target.innerText));
         
     })
 });
 /* Updates the DOM to reflect current scores */
 function updateDisplay(){
-
+    logDisplay.textContent = "You chose: " + playerSelection + "     Computer chose: " + computerSelection;
     playerScoreDisplay.textContent = playerScore.toString();
     computerScoreDisplay.textContent = computerScore.toString();
 }

@@ -21,6 +21,7 @@ button{
     gap: 8px;
 }
 .log-container{
+    font-size: 32px;
     display: flex;
     justify-content: center;
     gap: 24px;
