@@ -5,16 +5,23 @@ let computerSelection = "";
 const options = ["rock","paper","scissors"];
 
 
-game();
+const buttons = document.querySelectorAll('#btn'); //Selects all buttons
+//Now we need to add event listeners to each button
+buttons.forEach(element => {
+    element.addEventListener('click', function(e) {
+        console.log(e.target.innerText); //I feel like this isnt the best or most secure method of retrieving the button text
+    })
+});
+//game();
 console.log("Game ended");
+
 function game(){
     let wins = 0;
     let losses = 0;
-    for(let i=1; i<=5; i++){
-        
-        
+
+    
         do{
-            playerSelection = prompt("Please choose rock, paper or scissors:"); 
+            //playerSelection = prompt("Please choose rock, paper or scissors:"); 
         }
         while(playerSelection == null || playerSelection == undefined);
         computerPlay();
@@ -31,7 +38,7 @@ function game(){
             i--;
         }
         
-    }
+    
     if(wins > losses){
         console.log("You won the match!");
     }
@@ -51,6 +58,7 @@ function computerPlay(){
     
     let hold = options[getRandomInt(0,3)];
     computerSelection = hold;
+    return(hold);
 }
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -60,7 +68,7 @@ function getRandomInt(min, max) {
 function playRound(playerSelection,computerSelection){
     
     playerSelection = playerSelection.toLowerCase();
-    console.table(playerSelection , computerSelection);
+    console.log("P:",playerSelection ,"C:", computerSelection);
        
     if(playerSelection.localeCompare("rock") == 0){
         if(computerSelection.localeCompare("rock")){
