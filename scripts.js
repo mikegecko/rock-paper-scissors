@@ -3,56 +3,27 @@
 let playerSelection = "";
 let computerSelection = "";
 const options = ["rock","paper","scissors"];
+let playerScore = 0;
+let computerScore = 0;
 
 
 const buttons = document.querySelectorAll('#btn'); //Selects all buttons
 //Now we need to add event listeners to each button
 buttons.forEach(element => {
     element.addEventListener('click', function(e) {
-        console.log(e.target.innerText); //I feel like this isnt the best or most secure method of retrieving the button text
+        //I feel like this isnt the best or most secure method of retrieving the button text
+        let outcome = playRound(e.target.innerText, computerPlay());
+        tally(outcome);
     })
 });
-//game();
-console.log("Game ended");
 
-function game(){
-    let wins = 0;
-    let losses = 0;
+function tally(outcome){
+    if(outcome == -1){
 
-    
-        do{
-            //playerSelection = prompt("Please choose rock, paper or scissors:"); 
-        }
-        while(playerSelection == null || playerSelection == undefined);
-        computerPlay();
-        let result = playRound(playerSelection,computerSelection);
-        console.log("The result of the round is:", result );
-
-        if(result.localeCompare("You Win!") == 0){
-            wins++;
-        }
-        else if(result.localeCompare("You Lose!") == 0){
-            losses++;
-        }
-        else if(result.localeCompare("You Tie!") == 0){
-            i--;
-        }
-        
-    
-    if(wins > losses){
-        console.log("You won the match!");
     }
-    else if(wins < losses){
-        console.log("You lost the match!");
-    }
-    else if(wins == losses){
-        console.log("huh");
-    }
-    
-
-
     
 }
+
 
 function computerPlay(){
     
@@ -72,35 +43,35 @@ function playRound(playerSelection,computerSelection){
        
     if(playerSelection.localeCompare("rock") == 0){
         if(computerSelection.localeCompare("rock")){
-            return("You Tie!");
+            return(-1);
         }
-        if(computerSelection.localeCompare("paper")){
-            return("You Lose!");
+        else if(computerSelection.localeCompare("paper")){
+            return(0);
         }
-        if(computerSelection.localeCompare("scissors")){
-            return("You Win!");
+        else if(computerSelection.localeCompare("scissors")){
+            return(1);
         }
     } 
     else if(playerSelection.localeCompare("paper") == 0){
         if(computerSelection.localeCompare("rock")){
-            return("You Win!");
+            return(1);
         }
-        if(computerSelection.localeCompare("paper")){
-            return("You Tie!");
+        else if(computerSelection.localeCompare("paper")){
+            return(-1);
         }
-        if(computerPlaycomputerPlay.localeCompare("scissors")){
-            return("You Lose!");
+        else if(computerPlaycomputerPlay.localeCompare("scissors")){
+            return(0);
         }
     }
     else if(playerSelection.localeCompare("scissors") == 0){
         if(computerSelection.localeCompare("rock")){
-            return("You Lose!");
+            return(0);
         }
-        if(computerSelection.localeCompare("paper")){
-            return("You Win!");
+        else if(computerSelection.localeCompare("paper")){
+            return(1);
         }
-        if(computerSelection.localeCompare("scissors")){
-            return("You Tie!");
+        else if(computerSelection.localeCompare("scissors")){
+            return(-1);
         }
     }
     else{
