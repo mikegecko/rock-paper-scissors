@@ -1,2 +1,3 @@
 # rock-paper-scissors
 Demonstrates a basic rock-paper-scissors game. Utilizes HTML, CSS & JavaScript.
+<a href="https://russiangecko.github.io/rock-paper-scissors/">Demo</a>
